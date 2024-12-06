@@ -33,3 +33,14 @@
         name: httpd
         enabled: true
         state: started
+
+- name: Test intranet web server
+  hosts: localhost
+  become: false
+  tasks:
+    - name: connect to intranet web server
+      ansible.builtin.uri:
+        url: http://servera.lab.example.com
+        return_content: true
+        status_code: 200
+
